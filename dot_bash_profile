@@ -43,6 +43,7 @@ export HOMELAB="$HOME/DevOps/Repos/github/homelab"
 export GITHUB="$HOME/Devops/Repos/github"
 export SECONDBRAIN="$HOME/Obsidian/second-brain"
 export CLONE="$HOME/DevOps/Repos/clone"
+export LAB="$HOME/Devops/Repos/github/lab"
 
 #XDG
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
@@ -73,6 +74,7 @@ alias home='cd $HOMELAB'
 alias github='cd $GITHUB'
 alias sb='cd $SECONDBRAIN'
 alias clone='cd $CLONE'
+alias lab='cd $LAB'
 
 #K8S
 alias k='kubectl'
