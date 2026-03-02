@@ -10,7 +10,7 @@ function prompt {
   local RESET="\[\e[0m\]"
 
   # Here is where we actually export the PS1 Variable which stores the text for your prompt
-  export PS1="\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]\[\e[0;32m\]\$(parse_git_branch)\[\e[0m\]\n\$"
+  export PS1="\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]\[\e[0;31m\]\$(parse_git_branch)\[\e[0m\]\n\$"
   PS2='> '
   PS4='+ '
 }
@@ -148,3 +148,6 @@ fi
 # Mandatory loading of RVM into the shell
 # This must be the last line of your bash_profile always
 [[ -s "/Users/$USER/.rvm/scripts/rvm" ]] && source "/Users/$USER/.rvm/scripts/rvm" # This loads RVM into a shell session.
+
+# Created by `pipx` on 2026-03-01 23:23:52
+export PATH="$PATH:/Users/kevin/.local/bin"

@@ -1,0 +1,7 @@
+#!/bin/bash
+osxphotos export /Volumes/photos \
+  --directory "{folder_album,{created.year}}" \
+  --exportdb ~/.osxphotos/photos_mac_export.db \
+  --not-hidden \
+  --update \
+  --verbose
