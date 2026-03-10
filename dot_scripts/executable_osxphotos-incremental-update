@@ -4,4 +4,5 @@ osxphotos export /Volumes/photos \
   --exportdb ~/.osxphotos/photos_mac_export.db \
   --not-hidden \
   --update \
+  --cleanup
   --verbose

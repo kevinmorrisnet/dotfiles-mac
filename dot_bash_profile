@@ -10,7 +10,7 @@ function prompt {
   local RESET="\[\e[0m\]"
 
   # Here is where we actually export the PS1 Variable which stores the text for your prompt
-  export PS1="\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]\[\e[0;31m\]\$(parse_git_branch)\[\e[0m\]\n\$"
+  export PS1="\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]:\[\e[0;35m\]\w\[\e[0m\]\[\e[0;31m\]\$(declare -f parse_git_branch > /dev/null && parse_git_branch)\[\e[0m\]\n\$"
   PS2='> '
   PS4='+ '
 }
@@ -19,10 +19,6 @@ function prompt {
 prompt
 
 # Environment Variables
-
-# NODE_PATH
-# Node Path from Homebrew I believe
-export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
 
 # GIT_MERGE_AUTO_EDIT
 # This variable configures git to not require a message when you merge.
@@ -86,17 +82,15 @@ alias fgk='flux get kustomizations'
 alias frk='flux reconcile kustomizations'
 
 # Git
+alias gaa="git add ."
 alias gcl="git clone"
 alias gst="git status"
-alias gl="git pull"
-alias gp="git push"
-alias gd="git diff | subl"
-alias gc="git commit -v"
-alias gca="git commit -v -a"
-alias gb="git branch"
-alias gba="git branch -a"
-alias gcam="git commit -am"
-alias gbb="git branch -b"
+alias gpl="git pull"
+alias gpu="git push"
+alias gdf="git diff | vim"
+alias gcm="git commit -m"
+alias gsw="git switch"
+alias glg="git log"
 
 # Hidden File Visibility
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
@@ -104,13 +98,6 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 
 # Case-Insensitive Auto Completion
 bind "set completion-ignore-case on"
-
-# Postgres
-export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-#export PATH="/Users/kmorris/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT
 
 ### To add Homebrew to your PATH, add to your shell profile (e.g. ~/.bash_profile or ~/.zprofile):
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -126,28 +113,8 @@ export BREW_PREFIX="$(brew --prefix)"
 [[ -r "${BREW_PREFIX}/etc/profile.d/bash_completion.sh" ]] && source "${BREW_PREFIX}/etc/profile.d/bash_completion.sh"
 
 #kubectl completion
-alias k="kubectl"
 complete -o default -F __start_kubectl k
 source <(kubectl completion bash)
-
-#chruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.4.4
-
-#bash BAE baby
-echo "bash $BASH_VERSION"
-source $HOME/.bashcommands.sh
-
-# Source .bashrc if it exists
-if [ -f "$HOME/.bashrc" ]; then
-  source "$HOME/.bashrc"
-fi
-
-# RVM
-# Mandatory loading of RVM into the shell
-# This must be the last line of your bash_profile always
-[[ -s "/Users/$USER/.rvm/scripts/rvm" ]] && source "/Users/$USER/.rvm/scripts/rvm" # This loads RVM into a shell session.
 
 # Created by `pipx` on 2026-03-01 23:23:52
 export PATH="$PATH:/Users/kevin/.local/bin"
